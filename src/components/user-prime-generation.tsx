@@ -39,10 +39,10 @@ export function UserPrimeGenerator() {
         return res
       })
 
-    const data: { primes: number[] } = await response.json()
+    const data: { ok: boolean, data: { primes: number[] } } = await response.json()
     const endTime = performance.now()
     const requestLatency = Math.round(endTime - startTime)
-    setPrimes(data.primes || [])
+    setPrimes(data.data.primes || [])
     setLatency(requestLatency)
 
     // log the request
