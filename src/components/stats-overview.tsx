@@ -16,14 +16,6 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
 
   const selectedStat = stats.find((s) => s.name === selectedClient)
 
-  const latencyData = selectedStat
-    ? [
-        { metric: "Min", value: selectedStat.min_latency },
-        { metric: "Avg", value: selectedStat.avg_latency },
-        { metric: "Max", value: selectedStat.max_latency },
-      ]
-    : []
-
   return (
     <div className="space-y-6">
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

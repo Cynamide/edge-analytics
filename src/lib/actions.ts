@@ -88,12 +88,12 @@ export async function handlePrimes(request: NextRequest): Promise<Response> {
         // rate limit
         const allowed = await rateLimit(env.RATE_LIMIT, body.name);
         if (!allowed) {
-            return new Response("Rate limit exceeded", { status: 429 });
+            return NextResponse.json({ ok: false, error: "Rate limit exceeded. Please try again later." }, { status: 429 });
         }
 
         const primes = getConsecutivePrimes(2, 5);
 
-        return NextResponse.json({ primes });
+        return NextResponse.json({ ok: true, data: { primes } });
 
     } catch (error) {
         console.error("Error in GET /api/primes:", error);
