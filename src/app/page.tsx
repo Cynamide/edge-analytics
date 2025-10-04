@@ -16,8 +16,9 @@ export default async function DashboardPage() {
   const res = await fetch(STATS_URL, {cache: "no-store"});
   
   if (!res.ok) {
-      console.error(`Failed to fetch stats: ${res.statusText} \n error: ${await res.text()}`);
-      return <p>Failed to load dashboard data.</p>; 
+    // show full response error
+    const errorText = await res.text();
+    return <p>Failed to load dashboard data.{ <span className="text-muted-foreground">{errorText}</span> }</p>; 
   }
 
   const stats = await res.json() as StatEntry[];
