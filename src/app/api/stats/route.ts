@@ -6,7 +6,6 @@ export async function GET(request: NextRequest): Promise<Response> {
     try {
         return handleStats(request);
     } catch (error) {
-        console.error("Error in GET /api/stats:", error);
-        return NextResponse.json({ ok: false, error: 'Internal Server Error' }, { status: 500 });
+        return NextResponse.json({ ok: false, error: error }, { status: 500 });
     }
 }
