@@ -1,0 +1,6 @@
+CREATE TABLE request_logs (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    latency REAL NOT NULL,
+    ts TEXT NOT NULL
+);
