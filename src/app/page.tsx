@@ -5,13 +5,12 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { StatEntry } from "@/types/stats"
 import { UserPrimeGenerator } from "@/components/user-prime-generation"
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
 
 
 export default async function DashboardPage() {
-  
-  const STATS_URL = `${BASE_URL}/api/stats?lastMinutes=30`;
+
+  const STATS_URL = `/api/stats?lastMinutes=30`;
   
   const res = await fetch(STATS_URL, {cache: "no-store"});
   
